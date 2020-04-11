@@ -105,7 +105,7 @@ class MapViewController: UIViewController, MKMapViewDelegate, UIGestureRecognize
     }
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        let controller = segue.destination as! AlbumViewController
+        let controller = segue.destination as! PhotosViewController
         controller.pin = pinSelected
     }
 

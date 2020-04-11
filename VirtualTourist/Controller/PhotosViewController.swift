@@ -1,17 +1,21 @@
 //
-//  AlbumViewController.swift
+//  PhotosViewController.swift
 //  VirtualTourist
 //
-//  Created by Artem Osipov on 10/04/2020.
+//  Created by Artem Osipov on 11/04/2020.
 //  Copyright © 2020 Artem Osipov. All rights reserved.
 //
 
 import UIKit
 import CoreData
+import MapKit
 
 private let reuseIdentifier = "PhotoViewCell"
 
-class AlbumViewController: UICollectionViewController {
+class PhotosViewController: UIViewController, UICollectionViewDelegate, UICollectionViewDataSource {
+    
+    @IBOutlet weak var collectionView: UICollectionView!
+    @IBOutlet weak var mapView: MKMapView!
     
     var fetchedResultsController: NSFetchedResultsController<Photo>!
     var pin: Pin!
@@ -21,31 +25,30 @@ class AlbumViewController: UICollectionViewController {
     var updatedIndexPaths: [IndexPath]!
     
     var dataController: DataController {
-       let object = UIApplication.shared.delegate
-       let appDelegate = object as! AppDelegate
-       return appDelegate.dataController
+        let object = UIApplication.shared.delegate
+        let appDelegate = object as! AppDelegate
+        return appDelegate.dataController
     }
     
     var apiClient: ApiClient {
-       let object = UIApplication.shared.delegate
-       let appDelegate = object as! AppDelegate
-       return appDelegate.apiClient
+        let object = UIApplication.shared.delegate
+        let appDelegate = object as! AppDelegate
+        return appDelegate.apiClient
     }
-
+    
     override func viewDidLoad() {
         super.viewDidLoad()
-
-        // Uncomment the following line to preserve selection between presentations
-         self.clearsSelectionOnViewWillAppear = false
-
+        
+        
         // Register cell classes
         self.collectionView!.register(UINib.init(nibName: "PhotoCollectionViewCell", bundle: nil), forCellWithReuseIdentifier: reuseIdentifier)
         
-
+        
+        setupMap()
         setupFetchedResultsController()
         checkIfNeedNetworkRequest()
     }
-
+    
     fileprivate func setupFetchedResultsController() {
         let fetchRequest:NSFetchRequest<Photo> = Photo.fetchRequest()
         let predicate = NSPredicate(format: "pin == %@", pin)
@@ -62,6 +65,17 @@ class AlbumViewController: UICollectionViewController {
         }
     }
     
+    
+    func setupMap() {
+        let lat = CLLocationDegrees(pin.latitude)
+        let long = CLLocationDegrees(pin.longitude)
+        let coordinate = CLLocationCoordinate2D(latitude: lat, longitude: long)
+        let annotation = MKPointAnnotation()
+        annotation.coordinate = coordinate
+        mapView.addAnnotation(annotation)
+        mapView.setCenter(coordinate, animated: true)
+    }
+    
     func checkIfNeedNetworkRequest() {
         if (fetchedResultsController.sections![0].numberOfObjects == 0) {
             loadDataFromNetwork(page: 1)
@@ -74,11 +88,11 @@ class AlbumViewController: UICollectionViewController {
             guard error == nil else {self.showAlert(alertMessage: self.getAlertDataFromError(error: error!), buttonTitle: "Ok", presenter: self); return}
             
             DispatchQueue.main.async {
-               
+                
                 self.pin.removeFromPhotos(self.pin.photos!)
                 self.pin.pagesCount = Int32(photosWithPages!.pages)
                 try? self.dataController.viewContext.save()
-//            
+                //
                 photosWithPages!.photos.forEach({ (photo) in
                     photo.pin = self.pin
                     self.apiClient.loadPhoto(photo: photo) { (data, error) in
@@ -95,16 +109,16 @@ class AlbumViewController: UICollectionViewController {
     }
     
     // MARK: UICollectionViewDataSource
-    override func numberOfSections(in collectionView: UICollectionView) -> Int {
-       return fetchedResultsController.sections?.count ?? 1
+    func numberOfSections(in collectionView: UICollectionView) -> Int {
+        return fetchedResultsController.sections?.count ?? 1
     }
-
-
-    override func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
+    
+    
+    func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
         return fetchedResultsController.sections?[section].numberOfObjects ?? 0
     }
-
-    override func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
+    
+    func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: reuseIdentifier, for: indexPath) as! PhotoCollectionViewCell
         let photo = fetchedResultsController.object(at: indexPath)
         if (photo.photo != nil) {
@@ -114,22 +128,26 @@ class AlbumViewController: UICollectionViewController {
         return cell
     }
     
-    override func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
+    func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
         dataController.viewContext.delete(fetchedResultsController.object(at: indexPath))
         try? dataController.viewContext.save()
     }
-
-
+    
+    
     @IBAction func reloadPins(_ sender: Any) {
         loadDataFromNetwork(page: Int(arc4random_uniform(UInt32(pin!.pagesCount))))
     }
     
+    
+    
+    
+    
 }
 
 
-extension AlbumViewController:NSFetchedResultsControllerDelegate {
+extension PhotosViewController:NSFetchedResultsControllerDelegate {
     
-
+    
     
     func controllerWillChangeContent(_ controller: NSFetchedResultsController<NSFetchRequestResult>) {
         insertedIndexPaths = [IndexPath]()

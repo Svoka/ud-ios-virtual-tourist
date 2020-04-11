@@ -18,6 +18,7 @@
 		EE23B7B22440DB2E004946C5 /* VirtualTourist.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = EE23B7B02440DB2E004946C5 /* VirtualTourist.xcdatamodeld */; };
 		EE23B7B42440E4E9004946C5 /* AlbumViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = EE23B7B32440E4E9004946C5 /* AlbumViewController.swift */; };
 		EE23B7B62441B35E004946C5 /* PhotosResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = EE23B7B52441B35E004946C5 /* PhotosResponse.swift */; };
+		EE6AAB982442598E00193E64 /* PhotosViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = EE6AAB972442598E00193E64 /* PhotosViewController.swift */; };
 		EE81B6042441C291007766B8 /* AlertExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = EE81B6032441C291007766B8 /* AlertExtension.swift */; };
 		EEB94BDD2441E460004F4AF9 /* PhotoCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = EEB94BDB2441E460004F4AF9 /* PhotoCollectionViewCell.swift */; };
 		EEB94BDE2441E460004F4AF9 /* PhotoCollectionViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = EEB94BDC2441E460004F4AF9 /* PhotoCollectionViewCell.xib */; };
@@ -37,6 +38,7 @@
 		EE23B7B12440DB2E004946C5 /* VirtualTourist.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = VirtualTourist.xcdatamodel; sourceTree = "<group>"; };
 		EE23B7B32440E4E9004946C5 /* AlbumViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AlbumViewController.swift; sourceTree = "<group>"; };
 		EE23B7B52441B35E004946C5 /* PhotosResponse.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PhotosResponse.swift; sourceTree = "<group>"; };
+		EE6AAB972442598E00193E64 /* PhotosViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PhotosViewController.swift; sourceTree = "<group>"; };
 		EE81B6032441C291007766B8 /* AlertExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AlertExtension.swift; sourceTree = "<group>"; };
 		EEB94BDB2441E460004F4AF9 /* PhotoCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PhotoCollectionViewCell.swift; sourceTree = "<group>"; };
 		EEB94BDC2441E460004F4AF9 /* PhotoCollectionViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = PhotoCollectionViewCell.xib; sourceTree = "<group>"; };
@@ -111,6 +113,7 @@
 			children = (
 				EE23B7992440D3FE004946C5 /* MapViewController.swift */,
 				EE23B7B32440E4E9004946C5 /* AlbumViewController.swift */,
+				EE6AAB972442598E00193E64 /* PhotosViewController.swift */,
 			);
 			path = Controller;
 			sourceTree = "<group>";
@@ -188,6 +191,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				EE81B6042441C291007766B8 /* AlertExtension.swift in Sources */,
+				EE6AAB982442598E00193E64 /* PhotosViewController.swift in Sources */,
 				EEB94BDD2441E460004F4AF9 /* PhotoCollectionViewCell.swift in Sources */,
 				EE23B7AF2440D92F004946C5 /* DataController.swift in Sources */,
 				EE23B79A2440D3FE004946C5 /* MapViewController.swift in Sources */,

@@ -16,7 +16,6 @@
 		EE23B7AD2440D90F004946C5 /* ApiClient.swift in Sources */ = {isa = PBXBuildFile; fileRef = EE23B7AC2440D90F004946C5 /* ApiClient.swift */; };
 		EE23B7AF2440D92F004946C5 /* DataController.swift in Sources */ = {isa = PBXBuildFile; fileRef = EE23B7AE2440D92F004946C5 /* DataController.swift */; };
 		EE23B7B22440DB2E004946C5 /* VirtualTourist.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = EE23B7B02440DB2E004946C5 /* VirtualTourist.xcdatamodeld */; };
-		EE23B7B42440E4E9004946C5 /* AlbumViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = EE23B7B32440E4E9004946C5 /* AlbumViewController.swift */; };
 		EE23B7B62441B35E004946C5 /* PhotosResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = EE23B7B52441B35E004946C5 /* PhotosResponse.swift */; };
 		EE6AAB982442598E00193E64 /* PhotosViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = EE6AAB972442598E00193E64 /* PhotosViewController.swift */; };
 		EE81B6042441C291007766B8 /* AlertExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = EE81B6032441C291007766B8 /* AlertExtension.swift */; };
@@ -36,7 +35,6 @@
 		EE23B7AC2440D90F004946C5 /* ApiClient.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ApiClient.swift; sourceTree = "<group>"; };
 		EE23B7AE2440D92F004946C5 /* DataController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DataController.swift; sourceTree = "<group>"; };
 		EE23B7B12440DB2E004946C5 /* VirtualTourist.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = VirtualTourist.xcdatamodel; sourceTree = "<group>"; };
-		EE23B7B32440E4E9004946C5 /* AlbumViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AlbumViewController.swift; sourceTree = "<group>"; };
 		EE23B7B52441B35E004946C5 /* PhotosResponse.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PhotosResponse.swift; sourceTree = "<group>"; };
 		EE6AAB972442598E00193E64 /* PhotosViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PhotosViewController.swift; sourceTree = "<group>"; };
 		EE81B6032441C291007766B8 /* AlertExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AlertExtension.swift; sourceTree = "<group>"; };
@@ -112,7 +110,6 @@
 			isa = PBXGroup;
 			children = (
 				EE23B7992440D3FE004946C5 /* MapViewController.swift */,
-				EE23B7B32440E4E9004946C5 /* AlbumViewController.swift */,
 				EE6AAB972442598E00193E64 /* PhotosViewController.swift */,
 			);
 			path = Controller;
@@ -200,7 +197,6 @@
 				EE23B7962440D3FE004946C5 /* AppDelegate.swift in Sources */,
 				EE23B7982440D3FE004946C5 /* SceneDelegate.swift in Sources */,
 				EE23B7AD2440D90F004946C5 /* ApiClient.swift in Sources */,
-				EE23B7B42440E4E9004946C5 /* AlbumViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
